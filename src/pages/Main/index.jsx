@@ -9,10 +9,11 @@ const Main = () => {
   return (
     <MainStyled>
       <Dashboard />
-      <Description />
+      {/*<Description />
       <Local />
       <List />
       <Message />
+      */}
     </MainStyled>
   );
 };
