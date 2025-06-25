@@ -4,6 +4,8 @@ import List from "./pages/List";
 import Local from "./pages/Local";
 import Main from "./pages/Main";
 import Message from "./pages/Message";
+import PixQRCode from "./pages/Pix";
+import Teste from "./pages/Teste";
 import { Global } from "./styles/global";
 
 function App() {
@@ -11,6 +13,7 @@ function App() {
     <>
       <Global />
       <Main/>
+      {/*<Teste />*/}
     </>
   );
 }
