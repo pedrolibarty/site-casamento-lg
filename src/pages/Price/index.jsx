@@ -21,7 +21,7 @@ const Price = () => {
   const handleChange = (e) => {
     let value = e.target.value;
     value = value.replace(/\D/g, "");
-    const floatValue = paR$eFloat(value) / 100 || 0;
+    const floatValue = parseFloat(value) / 100 || 0;
     setRawValue(floatValue);
     const formatted = new Intl.NumberFormat("pt-BR", {
       style: "currency",
