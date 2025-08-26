@@ -20,7 +20,12 @@ const Local = () => {
         Av. Pe. Leonardo Senne 227 (Bairro Altinópolis), Governador Valadares,
         MG, 35053-100
       </span>
-      <div className="link">
+      <div
+        className="link"
+        onClick={() =>
+          window.open("https://maps.app.goo.gl/rLt91163fcJPHWdF8", "_blank")
+        }
+      >
         <img src="/icons/icon-map.png" alt="" />
         <h5>Maps</h5>
       </div>
