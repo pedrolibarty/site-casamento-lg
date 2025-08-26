@@ -17,7 +17,7 @@ export const AdminProvider = ({ children }) => {
   const [content, setContent] = useState("");
   const [loadingMsg, setLoadingMsg] = useState(false);
 
-  const api = "http://localhost:3000/api/";
+  const api = "https://api-casamento-lg-nezt.vercel.app/api/";
 
   const getGifts = async () => {
     try {
