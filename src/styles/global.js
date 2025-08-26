@@ -10,10 +10,10 @@ export const Global = createGlobalStyle`
 }
 
  @font-face {
-    font-family: 'Safira March';
-    src: url('/fonts/SafiraMarch.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+    font-family: 'Hatton';
+    src: url('/fonts/Hatton2.otf') format('truetype');
+    font-weight: 200;
+    //font-style: normal;
   }
 
 html,
@@ -121,7 +121,7 @@ section {
 
 body {
 	line-height: 1;
-	font-family: 'Safira March';
+	font-family: 'Hatton';
 }
 
 ol,

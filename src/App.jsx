@@ -1,3 +1,4 @@
+import { Toaster } from "react-hot-toast";
 import Dashboard from "./pages/Dashboard";
 import Description from "./pages/Description";
 import List from "./pages/List";
@@ -11,8 +12,9 @@ import { Global } from "./styles/global";
 function App() {
   return (
     <>
+      <Toaster position="top-right" />
       <Global />
-      <Main/>
+      <Main />
       {/*<Teste />*/}
     </>
   );

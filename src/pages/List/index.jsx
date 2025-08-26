@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { ListStyled } from "./style";
+import { AdminContext } from "../../contexts/AdminContext";
 
 const List = () => {
+  const { gifts, getCurrentGift } = useContext(AdminContext);
+
   return (
     <ListStyled>
       <div className="page-top">
@@ -9,54 +13,26 @@ const List = () => {
         <img src="/images/ramo-list-r.png" alt="" className="ramo-list-r" />
       </div>
       <ul>
-        <li>
-          <div className="card-img">
-            <img src="/gifts/gift-1.png" alt="" />
-          </div>
-          <p>Geladeira Brastemp 447 Litros Frost Free Inverse</p>
-          <span>RS 5.029,00</span>
-          <button>Presentear</button>
-        </li>
-        <li>
-          <div className="card-img">
-            <img src="/gifts/gift-1.png" alt="" />
-          </div>
-          <p>Geladeira Brastemp 447 Litros Frost Free Inverse</p>
-          <span>RS 5.029,00</span>
-          <button>Presentear</button>
-        </li>
-        <li>
-          <div className="card-img">
-            <img src="/gifts/gift-1.png" alt="" />
-          </div>
-          <p>Geladeira Brastemp 447 Litros Frost Free Inverse</p>
-          <span>RS 5.029,00</span>
-          <button>Presentear</button>
-        </li>
-        <li>
-          <div className="card-img">
-            <img src="/gifts/gift-1.png" alt="" />
-          </div>
-          <p>Geladeira Brastemp 447 Litros Frost Free Inverse</p>
-          <span>RS 5.029,00</span>
-          <button>Presentear</button>
-        </li>
-        <li>
-          <div className="card-img">
-            <img src="/gifts/gift-1.png" alt="" />
-          </div>
-          <p>Geladeira Brastemp 447 Litros Frost Free Inverse</p>
-          <span>RS 5.029,00</span>
-          <button>Presentear</button>
-        </li>
-        <li>
-          <div className="card-img">
-            <img src="/gifts/gift-1.png" alt="" />
-          </div>
-          <p>Geladeira Brastemp 447 Litros Frost Free Inverse</p>
-          <span>RS 5.029,00</span>
-          <button>Presentear</button>
-        </li>
+        {gifts.map((gift) => {
+          const isDisabled = gift.payvalue >= gift.value;
+
+          return (
+            <li key={gift.id}>
+              <div className="card-img">
+                <img src={`/gifts/${gift.url_image}`} alt="" />
+              </div>
+              <p>{gift.name}</p>
+              <span>R$ {gift.value},00</span>
+              <button
+                onClick={() => !isDisabled && getCurrentGift(gift.id)}
+                disabled={isDisabled}
+                className={isDisabled ? "disabled-btn" : ""}
+              >
+                {isDisabled ? "Presenteado" : "Presentear"}
+              </button>
+            </li>
+          );
+        })}
       </ul>
     </ListStyled>
   );

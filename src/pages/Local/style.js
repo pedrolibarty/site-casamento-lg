@@ -37,12 +37,14 @@ export const LocalStyled = styled.section`
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 10%;
 
     margin: 30px 0px;
 
     img {
-      width: 30%;
+      width: 45%;
+      max-width: 222px;
     }
   }
 

@@ -51,6 +51,11 @@ export const MessageStyled = styled.section`
 
         #message-input {
             height: 100px;
+            width: 100%;
+
+            outline: none;
+            border-radius: 5px;
+            border: 1px var(--color-primary) solid;
         }
     }
 
@@ -70,8 +75,10 @@ export const MessageStyled = styled.section`
             border-radius: 5px;
 
             color: var(--color-white);
-            font-family: 'Safira March';
+            font-family: 'Hatton';
             font-size: 16px;
+
+            cursor: pointer;
         }
 
   }

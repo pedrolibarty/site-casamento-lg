@@ -56,14 +56,23 @@ export const ListStyled = styled.section`
         align-items: center;
         justify-content: center;
 
-        overflow: hidden;
+        background-color: #f5f5f5;
+      }
+
+      .card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; 
       }
 
       p {
         width: 80%;
         text-align: center;
+        height: 55px;
 
         margin: 15px 0px;
+
+        font-size: 14px;
       }
 
       span {
@@ -86,8 +95,16 @@ export const ListStyled = styled.section`
         border-radius: 5px;
 
         color: var(--color-white);
-        font-family: "Safira March";
+        font-family: "Hatton";
         font-size: 16px;
+
+        cursor: pointer;
+      }
+
+      button:disabled,
+      .disabled-btn {
+        background-color: #cccccc;
+        cursor: not-allowed;
       }
     }
   }

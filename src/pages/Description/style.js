@@ -21,7 +21,7 @@ export const DescriptionStyled = styled.section`
     justify-content: center;
 
     .circle-casal {
-      width: 50%;
+      width: 60%;
       min-width: 330px;
       max-width: 500px;
     }
