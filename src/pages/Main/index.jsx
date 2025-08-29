@@ -21,12 +21,12 @@ const Main = () => {
     <MainStyled>
       {isModal && (<Price />)}
       <Dashboard />
-       {/*<Description />
+      {/*<Description />
       <Local />
       <List />
       <Message />*/}
       
-     <div className="add">
+      <div className="add">
         <h3>
           Nosso grande dia está se aproximando!
           <br/> Estamos preparando cada detalhe
