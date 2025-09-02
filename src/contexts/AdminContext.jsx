@@ -45,9 +45,9 @@ export const AdminProvider = ({ children }) => {
     const qrCodePix = QrCodePix({
       version: "01",
       key: "vianalacerda1002@gmail.com",
-      name: "Lavínia Pereira Viana",
+      name: "Gean Gonçalves Larcerda",
       city: "Governador Valadares",
-      transactionId: "40028922",
+      transactionId: "",
       message: "",
       value: value,
     });
