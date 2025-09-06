@@ -12,6 +12,7 @@ const List = () => {
         <h2>Lista de Presentes</h2>
         <img src="/images/ramo-list-r.png" alt="" className="ramo-list-r" />
       </div>
+      <p id="guide">Presentear os noivos é super simples: basta escolher o presente, definir o valor que deseja contribuir e gerar o pagamento via PIX. Pronto! <br/> Seu carinho já fará parte dessa nova fase do casal.</p>
       <ul>
         {gifts.map((gift) => {
           const isDisabled = gift.payvalue >= gift.value;

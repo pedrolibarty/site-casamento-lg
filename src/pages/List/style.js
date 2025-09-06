@@ -109,6 +109,14 @@ export const ListStyled = styled.section`
     }
   }
 
+  #guide {
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+
+    margin-top: 30px;
+  }
+
   @media (max-width: 620px) {
     .page-top {
       h2 {
