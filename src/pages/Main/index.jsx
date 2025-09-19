@@ -7,13 +7,21 @@ import Message from "../Message";
 import { MainStyled } from "./style";
 import { AdminContext } from "../../contexts/AdminContext";
 import Price from "../Price";
-
+import { useParams } from "react-router-dom";
+import Companions from "../Companions"
+;
 const Main = () => {
   const { getGifts, isModal, setGifts } = useContext(AdminContext);
+  const {getCompanions} = useContext(GuestContext);
+  const { id_guest } = useParams();
+
 
   useEffect(() => {
     getGifts();
 
+    if(id_guest){
+      getCompanions()
+    }
     //setGifts([{name: "Cooktop de última geração", url_image: "cooktop-plastico.png", value: 5050, payvalue: 50, id: "011"}])
   }, []);
 
@@ -24,6 +32,7 @@ const Main = () => {
       <Description />
       <Local />
       <List />
+      {id_guest && <Companions />}
       <Message />
 
       {/*<div className="add">
