@@ -7,23 +7,38 @@ import Message from "../Message";
 import { MainStyled } from "./style";
 import { AdminContext } from "../../contexts/AdminContext";
 import Price from "../Price";
-
+import { useParams } from "react-router-dom";
+import Companions from "../Companions";
+import { GuestContext } from "../../contexts/GuestContext";
+import Loading from "../Loading";
 const Main = () => {
   const { getGifts, isModal, setGifts } = useContext(AdminContext);
+  const { getCompanions, companions, companionLoading, setCompanionLoading } =
+    useContext(GuestContext);
+  const { id_guest } = useParams();
 
   useEffect(() => {
     getGifts();
+    if (id_guest) {
+      getCompanions(id_guest);
+    }
+    if (id_guest == undefined) {
+      setCompanionLoading(false);
+    }
 
     //setGifts([{name: "Cooktop de última geração", url_image: "cooktop-plastico.png", value: 5050, payvalue: 50, id: "011"}])
   }, []);
 
-  return (
+  return companionLoading ? (
+    <Loading />
+  ) : (
     <MainStyled>
       {isModal && <Price />}
       <Dashboard />
       <Description />
       <Local />
       <List />
+      {id_guest && companions.length > 0 && <Companions />}
       <Message />
 
       {/*<div className="add">

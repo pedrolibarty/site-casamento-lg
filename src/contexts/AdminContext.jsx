@@ -16,6 +16,7 @@ export const AdminProvider = ({ children }) => {
   const [name, setName] = useState("");
   const [content, setContent] = useState("");
   const [loadingMsg, setLoadingMsg] = useState(false);
+  const [payGifts, setPayGifts] = useState([])
 
   const api = "https://api-casamento-lg-nezt.vercel.app/api/";
 
@@ -34,6 +35,28 @@ export const AdminProvider = ({ children }) => {
       const data = await res.json();
 
       setGifts(data);
+      return;
+    } catch (error) {
+      showToast("Ocorreu um erro ao carregar a página!", false);
+      return;
+    }
+  };
+
+    const getPayGifts = async () => {
+    try {
+      const res = await fetch(`${api}pay/gifts`, {
+        method: "GET",
+      });
+
+      if (!res.ok) {
+        console.log("Erro");
+
+        return;
+      }
+
+      const data = await res.json();
+
+      setPayGifts(data);
       return;
     } catch (error) {
       showToast("Ocorreu um erro ao carregar a página!", false);
@@ -261,6 +284,9 @@ export const AdminProvider = ({ children }) => {
         createMessage,
         loadingMsg,
         showToast,
+        payGifts, 
+        setPayGifts,
+        getPayGifts
       }}
     >
       {children}
