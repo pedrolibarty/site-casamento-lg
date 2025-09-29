@@ -4,7 +4,6 @@ import { ManagerCompanionsStyled } from "./style";
 import Invitation from "../Invitation";
 import Companion from "../Companion";
 import Form from "../Form";
-import Loading from "../Loading";
 
 const ManagerCompanions = () => {
   const {allCompanions, loading } =

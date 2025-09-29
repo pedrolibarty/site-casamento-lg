@@ -285,7 +285,8 @@ export const AdminProvider = ({ children }) => {
         loadingMsg,
         showToast,
         payGifts, 
-        setPayGifts
+        setPayGifts,
+        getPayGifts
       }}
     >
       {children}

@@ -1,23 +1,32 @@
 import styled from "styled-components";
 
 export const CompanionsStyled = styled.section`
-width: 100%;
+  width: 100%;
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  h2 {
-    font-family: "Sacramento";
-    text-align: center;
-    font-size: 45px;
+  .page-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    width: 90%;
-    max-width: 600px;
+    .ramo-list-l {
+      width: 30%;
+    }
 
-    margin: 30px 0px;
+    .ramo-list-r {
+      width: 30%;
+    }
+
+    h2 {
+      font-size: 30px;
+      font-weight: lighter;
+      color: var(--color-primary);
+      text-align: center;
+    }
   }
-
   p {
     width: 90%;
     max-width: 600px;
@@ -114,28 +123,32 @@ width: 100%;
     button {
       background-color: var(--color-primary);
 
-      width: 250px;
-      height: 50px;
+      width: 200px;
+      height: 30px;
 
       display: flex;
       align-items: center;
       justify-content: center;
 
-      margin-bottom: 20px;
+      margin: 30px 0px;
 
-      border: 1px solid var(--color-primary);
+      border: none;
       border-radius: 5px;
 
-      color: var(--color-black);
-      font-family: "Sacramento";
-      font-size: 25px;
+      color: var(--color-white);
+      font-family: "Hatton";
+      font-size: 16px;
 
       cursor: pointer;
     }
+  }
 
-    button:hover {
-      background-color: transparent;
-    }
+  #guide-invite {
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+
+    margin-top: 30px;
   }
 
   @media (max-width: 425px) {
@@ -146,12 +159,20 @@ width: 100%;
     p {
       font-size: 15px;
     }
-ul{
-    li {
-      .name {
-        font-size: 15px;
+    ul {
+      li {
+        .name {
+          font-size: 15px;
+        }
       }
     }
   }
-}
+
+  @media (max-width: 620px) {
+    .page-top {
+      h2 {
+        font-size: 20px;
+      }
+    }
+  }
 `;

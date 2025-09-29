@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { InvitationStyled } from "./styles";
+import { InvitationStyled } from "./style";
 import { GuestContext } from "../../contexts/GuestContext";
 import toast from "react-hot-toast";
 
@@ -8,8 +8,21 @@ const Invitation = () => {
   const [filterSend, setFilterSend] = useState("all");
   const [nameFilter, setNameFilter] = useState("");
 
-  const copy = (id_guest) => {
-    const texto = ``;
+  const copy = (id_guest, name) => {
+    const texto = `
+
+    ✨ Querido(a) ${name},
+
+    Ficamos imensamente felizes em saber que você estará conosco em um dos dias mais importantes das nossas vidas. Sua presença tornará nosso casamento ainda mais especial e inesquecível. 💍💚
+
+    Para facilitar a organização, deixamos abaixo o link para confirmação de presença:
+    https://site-casamento-lg.vercel.app/${id_guest}
+
+    Prazo máximo de confirmação: 19 de outubro!
+
+    Com gratidão e carinho,
+    Lavínia & Gean
+    `;
 
     navigator.clipboard
       .writeText(texto)
@@ -96,7 +109,7 @@ const Invitation = () => {
           return (
             <li className="convite-line" key={g.id_guest}>
               <div className="container">
-                <div className="content" onClick={() => copy(g.id_guest)}>
+                <div className="content" onClick={() => copy(g.id_guest, g.name)}>
                   <h2>{g.name}</h2>
                 </div>
                 <div className="send">

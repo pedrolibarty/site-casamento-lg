@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export const GuestContext = createContext();
 
@@ -8,10 +9,13 @@ export const GuestProvider = ({ children }) => {
   const [originCompanions, setOriginCompanions] = useState([]);
   const [allCompanions, setAllCompanions] = useState([]);
   const [guests, setGuests] = useState([]);
-  const [companionsLoading, setCompanionsLoading] = useState(true);
+  const [companionLoading, setCompanionLoading] = useState(true);
+  const [allCompanionsLoading, setAllCompanionsLoading] = useState(true);
+  const [guestsLoading, setGuestsLoading] = useState(true);
   const navigate = useNavigate();
 
   const api = "https://api-birthday-isis.vercel.app/api/";
+  //const api = "http://localhost:3000/api/";
 
   const getCompanions = async (id_guest) => {
     try {
@@ -26,18 +30,18 @@ export const GuestProvider = ({ children }) => {
       const data = await res.json();
 
       if (data[0] === undefined) {
-        //Entender o que fazer nessa situação
+        setCompanionLoading(false);
 
         return;
       }
 
       setCompanions(data);
       setOriginCompanions(data);
-      setCompanionsLoading(false);
+      setCompanionLoading(false);
     } catch (error) {
       console.log(error);
       //Entender o que fazer nessa situação
-      return
+      return;
     }
   };
 
@@ -117,9 +121,10 @@ export const GuestProvider = ({ children }) => {
       const data = await res.json();
 
       setGuests(data);
-      setLoading(false);
-    } catch {
-      navigate("/error");
+      setGuestsLoading(false);
+    } catch (error){
+      console.log(error)
+      //navigate("/error");
     }
   };
 
@@ -145,6 +150,7 @@ export const GuestProvider = ({ children }) => {
       const data = await res.json();
 
       setAllCompanions(data);
+      setAllCompanionsLoading(false)
       return;
     } catch (error) {
       toast("Erro para listar convidados", {
@@ -209,6 +215,8 @@ export const GuestProvider = ({ children }) => {
   };
 
   const createCompanions = async (data) => {
+    console.log(data)
+
     try {
       if (!data.agrupamento.name || data.agrupamento.name.trim() === "") {
         toast("Agrupamento vazio!", {
@@ -273,7 +281,16 @@ export const GuestProvider = ({ children }) => {
       }
 
       const result = await res.json();
-      console.log("Sucesso:", result);
+
+      toast("Convite criado!", {
+          duration: 4000,
+          position: "top-right",
+          icon: "✅",
+          style: {
+            background: "#FFFFFF",
+            color: "#000",
+          },
+        });
     } catch (error) {
       console.error("Erro inesperado:", error.message);
     }
@@ -286,7 +303,7 @@ export const GuestProvider = ({ children }) => {
         getCompanions,
         setCompanions,
         updateCompaion,
-        loading,
+        setCompanionLoading,
         guests,
         getGuests,
         getAllCompanions,
@@ -294,6 +311,9 @@ export const GuestProvider = ({ children }) => {
         setGuests,
         updateGuest,
         createCompanions,
+        companionLoading,
+        allCompanionsLoading,
+        guestsLoading
       }}
     >
       {children}

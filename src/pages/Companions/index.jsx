@@ -1,11 +1,12 @@
-import { CompanionsStyled } from "./style"
+import { useContext, useEffect } from "react";
+import { CompanionsStyled } from "./style";
+import { GuestContext } from "../../contexts/GuestContext";
 
 const Companions = () => {
-    const { companions, setCompanions, updateCompaion } =
+  const { companions, setCompanions, updateCompaion } =
     useContext(GuestContext);
 
-
-    const confirm = (id) => {
+  const confirm = (id) => {
     const updated = companions.map((g) =>
       g.id_comp === id ? { ...g, status: true } : g
     );
@@ -21,11 +22,34 @@ const Companions = () => {
     setCompanions(updated);
   };
 
-    return (
-        <CompanionsStyled>
-            <p>Queridos amigos e familiares, estamos muito felizes em compartilhar este momento especial com vocês e queremos que nosso casamento seja ainda mais inesquecível com a presença das pessoas que amamos. Para nos ajudar na organização, pedimos que confirmem sua presença selecionando “Sim” para quem irá e “Não” para quem não poderá comparecer, e em seguida clicar no botão “Confirmar sua presença!” abaixo da lista.</p>
+  useEffect(() => {
+    if (window.location.hash) {
+      const id = window.location.hash.replace("#", "");
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, []);
 
-            <ul>
+  return (
+    <CompanionsStyled>
+      <div className="page-top" id="invite">
+        <img src="/images/ramo-list-l.png" alt="" className="ramo-list-l" />
+        <h2>Confirmação de presença</h2>
+        <img src="/images/ramo-list-r.png" alt="" className="ramo-list-r" />
+      </div>
+
+      <p id="guide-invite">
+        Queridos amigos e familiares, estamos muito felizes em compartilhar este
+        momento especial com vocês e queremos que nosso casamento seja ainda
+        mais inesquecível com a presença das pessoas que amamos. Para nos ajudar
+        na organização, pedimos que confirmem sua presença selecionando “Sim”
+        para quem irá e “Não” para quem não poderá comparecer, e em seguida
+        clicar no botão “Confirmar sua presença!” abaixo da lista.
+      </p>
+
+      <ul>
         {companions.map((g) => {
           return (
             <li key={g.id_comp}>
@@ -64,6 +88,8 @@ const Companions = () => {
         })}
         <button onClick={() => updateCompaion()}>Confirmar presença!</button>
       </ul>
-        </CompanionsStyled>
-    )
-}
+    </CompanionsStyled>
+  );
+};
+
+export default Companions;

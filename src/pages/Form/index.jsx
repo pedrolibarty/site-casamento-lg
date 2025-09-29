@@ -3,11 +3,13 @@ import { FormStyled } from "./style";
 import { GuestContext } from "../../contexts/GuestContext";
 
 const Form = () => {
-  const { guests, createCompanions} = useContext(GuestContext);
+  const { guests, createCompanions } = useContext(GuestContext);
   const [count, setCount] = useState(1);
   const [companions, setCompanions] = useState([""]);
   const [useExistingGroup, setUseExistingGroup] = useState(true);
-  const [selectedGroupId, setSelectedGroupId] = useState("");
+  const [selectedGroupId, setSelectedGroupId] = useState(
+    guests.length > 0 ? guests[0].id_guest : ""
+  );
   const [newGroupName, setNewGroupName] = useState("");
 
   const handleCompanionChange = (index, value) => {
@@ -39,7 +41,7 @@ const Form = () => {
       companions: finalCompanions,
       agrupamento,
     };
-    createCompanions(result)
+    createCompanions(result);
   };
 
   return (
