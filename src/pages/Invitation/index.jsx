@@ -16,7 +16,7 @@ const Invitation = () => {
     Ficamos imensamente felizes em saber que você estará conosco em um dos dias mais importantes das nossas vidas. Sua presença tornará nosso casamento ainda mais especial e inesquecível. 💍💚
 
     Para facilitar a organização, deixamos abaixo o link para confirmação de presença:
-    https://site-casamento-lg.vercel.app/${id_guest}
+    https://site-casamento-lg.vercel.app/${id_guest}#invite
 
     Prazo máximo de confirmação: 19 de outubro!
 
